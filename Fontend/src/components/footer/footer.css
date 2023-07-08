@@ -1,0 +1,41 @@
+footer{
+   
+
+display: grid;
+grid-template-columns: repeat(4,1fr);
+}
+.footer-item>h1 , .footer-item>h3{
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+.footer{
+    color: #fff;
+    background-image: url(https://bizweb.dktcdn.net/100/369/704/themes/741072/assets/bg-footer2.jpg?1621480486681);
+    padding: 30px 60px;
+    margin-top: 40px;
+}
+ft-input{
+    padding: 10px;
+    
+}
+.form{
+    margin: 20px 100px;
+    
+
+}
+.form-footer> form{
+    background-color: #fff;
+    width: 450px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  
+}
+.ft-btn{
+    color: #fff;
+    background-color: black;
+    border-radius: 50px;
+    padding: 5px 10px;
+    margin-right: 5px;
+}

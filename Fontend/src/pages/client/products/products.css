@@ -1,0 +1,90 @@
+.banner-product img{
+    width: 100%;
+}
+.banner-product{
+    background-image: url(https://theme.hstatic.net/200000065946/1000806110/14/cvn_slideshow_8.jpg?v=2676);
+    background-size: 100%;
+    height: 350px;
+    background-repeat: no-repeat;
+    border-radius:  10px;
+}
+main{
+    display: flex;
+   
+}
+article{
+    width: 20%;
+    
+}
+aside{
+    width: 80%;
+    margin-left: 40px;
+    
+}
+.product-main{
+   padding: 20px 100px;
+}
+
+.cate h3, #filter h3{
+    background-color: #fca120 ;
+    padding: 10px 20px;
+    color: #fff;
+    border-radius: 5px;
+}
+.name-cate {
+    max-height: 250px;
+    overflow: scroll;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+   
+}
+
+.name-cate button{
+    width: 100%;
+    margin-bottom: 14px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+   
+}
+.name-cate>button>img{
+    margin-right: 10px;
+   
+}
+#filter{
+    margin-top: 30px;
+}
+#filter-item{
+   background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+}
+.product-menu{
+    border-bottom: 1px solid #ccc ;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+}
+
+.filter-size{
+    margin-top: 20px;
+}
+.sale{
+    margin-top: 30px;
+}
+.sale img{
+    width: 100%;
+    margin-top: 10px;
+   
+}
+aside> .products-hottrend{
+    grid-template-columns: repeat(4,1fr);
+}
+.product-menu{
+    font-size: 20px;
+    color: #ff7600;
+}
+#page>ul>li{
+    display: flex;
+    align-items: center;
+}

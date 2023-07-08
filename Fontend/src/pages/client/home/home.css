@@ -1,0 +1,215 @@
+.banner img{
+    width: 100%;
+ 
+}
+.product{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-gap: 20px;
+   
+}
+.home-main{
+  padding: 20px 100px;
+}
+.product img{
+    width: 100%;
+    border-radius: 8px;
+    height: 202.48px;
+
+}
+.image img{
+    width: 100%;
+    border-radius: 5px 5px 0 0;
+}
+
+#heart{
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 20px;
+    margin: 10px 5px;
+
+}
+.products-hottrend{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    grid-gap: 25px;
+    margin-top: 20px;
+    margin-bottom: 30px ;
+    /* background-color: #F3F3F3; */
+   
+
+}
+.products-hottrend .colum{
+    border-radius: 5px;
+    background-color: #fff;
+}
+.content{
+   
+    padding: 15px;
+}
+
+.title-child{
+    display: flex;
+  
+}
+.title h1{   
+   display: inline;
+   padding: 10px;
+   font-size: 20px;
+   color: #fff;
+    
+    background-color: #ff7600;
+  
+   
+       
+}
+.title h5{
+    width: 50px;
+    height: 50px;
+    background-color: #ff7600;
+    clip-path: polygon(0% 100%, 100% 100%, 0% 0%);
+  
+}
+.title hr{
+    color: #ff7600;
+    border: none;
+    border-bottom: 2px solid #ff7600;
+   
+    
+}
+.title em{
+    display: block;
+    margin-top: 10px;
+}
+.content h3{
+    font-size: smaller;
+    font-weight: 500;
+    color: #f51517;
+    background-color: #ffebeb;
+    display: inline;
+}
+.content p{
+    margin: 6px 0;
+}
+.content strong{
+    color: #F30;
+}
+.box i{
+    font-size: 20px;
+    border: 2px solid #ebebeb;
+    padding: 10px;
+    border-radius: 50%;
+    margin-right: 7px;
+}
+.box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
+}
+.box h3{
+    font-weight: 600;
+}
+.actions{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    margin: 20px 0;
+    animation-name: moveInBottom;
+    animation-duration: 2s;
+    animation-timing-function: ease-out;
+    
+}
+.banner-child img{
+    width: 100%;
+  
+}
+.icon{
+    position: absolute;
+   
+    bottom:0%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 15px;
+}
+.icon i{
+    border-radius: 10px;
+    padding: 15px;
+    background-color: #fff;
+    margin-left: 5px;
+    color: #000;
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+}
+.icon i:hover{
+    background-color: #fca120;
+    transform: rotate(360deg);
+    transition: 0.3s ease-in-out;
+    border-radius: 50%;
+}
+.products-hottrend .image{
+    position: relative;
+    overflow: hidden;
+    border-radius: 5px 5px 0 0;
+}
+.products-hottrend .colum:hover img{
+    transition: 0.3s ease-in-out;
+    transform: scale(1.2);
+    
+    
+
+}
+.icon {
+    position: absolute;
+    bottom: 0%;
+    left: 50%;
+    opacity: 0;
+    transition: bottom 0.3s ease, opacity 0.3s ease;
+    transform: translateX(-50%);
+  }
+  
+  .colum:hover .icon {
+    bottom: 40%;
+    opacity: 1;
+  }
+  
+.news{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 30px;
+  
+}
+.news img{
+    width: 100%;
+}
+.new-item-content p{
+    padding: 7px 0;
+    height: 45px;
+    overflow: hidden;
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    margin-bottom: 10px;
+}
+#view-add{
+    text-decoration: none;
+    color: #ff7600;
+    font-size: 18px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+.new-item-content h2  {
+    
+    font-size: 17px;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin: 10px 0;
+}
+.new-item-content h2 a{
+    text-decoration: none;
+    color: black;
+}
+.new-item-content h2 a:hover{
+    color: #ff7600;
+}
