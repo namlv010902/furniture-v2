@@ -20,6 +20,7 @@ const DetailProduct = (props: IProps) => {
   const [show, setShow] = React.useState(false)
   const [reset, setReset] = React.useState(false)
   const [product, setProduct] = useState<IProduct>()
+  const [relatedProducts, setRelatedProducts] =useState([])
   const [checkFavorites, setCheckFavorites] = useState(false)
   const [countFavorites, setCountFavorites] = useState(0)
 
@@ -37,7 +38,8 @@ const DetailProduct = (props: IProps) => {
   useEffect(() => {
     getProduct(id).then(({ data }) => {
       setProduct(data.product)
-      console.log(data.product);
+      setRelatedProducts(data.relatedProducts)
+      console.log(data);
     }
     )
   }, [])
@@ -57,7 +59,7 @@ const DetailProduct = (props: IProps) => {
   const restProduct = (id: string) => {
     getProduct(id).then(({ data }) => {
       setProduct(data.product)
-      console.log(data.product);
+      setRelatedProducts(data.relatedProducts)
     })
     scroll.scrollToTop();
     setReset(true)
@@ -242,7 +244,7 @@ Miễn phí đổi trả khi sản phẩm phẩm lỗi do sản xuất hoặc v�
           <em style={{ color: "black" }}>Cập nhật các sản phẩm bán chạy nhất trong tuần</em>
         </div>
         <div className="products-hottrend">
-          {product?.categoryId?.productId?.map((item: any) => (
+          {relatedProducts?.map((item: any) => (
             <div className="colum" key={item._id}>
               <div className="image">
 

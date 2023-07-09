@@ -35,5 +35,13 @@ export const filterPrice=(min:number ,max:number)=>{
     }
     return instance.post('productFilter/',value)
 }
+export const getCategoryProducts=(idCate:string)=>{
+    return instance.get('categoryProducts/'+idCate)
+
+}
+export const paginateCategoryProducts=(idCate:string,page:number)=>{
+    return instance.get(`categoryProducts/${idCate}?_limit=12&_page=`+page)
+
+}
 
 

@@ -2,14 +2,28 @@ import { useEffect, useState } from "react"
 import { IProduct } from "../../types/products"
 import { getProductNew } from "../../api/products"
 import { Link } from "react-router-dom"
+import { toast } from "react-toastify"
+interface IProps {
+  handleAddToCart(data: any): void
+}
 
-
-const NewProducts = () => {
+const NewProducts = (props:IProps) => {
     const [products, setProducts] = useState<IProduct[]>()
     useEffect(() => {
       getProductNew().then(({ data }) => setProducts(data.product.docs)
       )
     }, [])
+    const onAddCart = (id: any) => {
+      const data={
+       productId: id,
+       quantity:1,
+       userId:JSON.parse(localStorage.getItem('userId')!)
+      }
+      if(!JSON.parse(localStorage.getItem('userId')!)){
+        return toast.error("Bạn chưa đăng nhập")
+       }
+      props.handleAddToCart(data)
+     }
   return (
     <div>
          <div className="title" >
@@ -26,7 +40,7 @@ const NewProducts = () => {
            <i id='heart' className="fa fa-heart-o" aria-hidden="true"></i>
            <div className="icon">
          <Link to={`/product/`+item._id}> <i className="fa fa-eye" aria-hidden="true"></i></Link> 
-            <i className="fa fa-cart-plus" aria-hidden="true"></i>
+            <i onClick={()=>onAddCart(item._id)} className="fa fa-cart-plus" aria-hidden="true"></i>
            </div>
           </div>
           <div className="content">

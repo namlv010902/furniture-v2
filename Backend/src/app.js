@@ -7,6 +7,8 @@ import cartRouter from "./routers/carts"
 import orderRouter from "./routers/orders"
 import commentRouter from "./routers/comments"
 import favoriteRouter from "./routers/favorites"
+import uploadRouter from "./routers/upload"
+import sendMailRouter from "./routers/sendMail"
 import cors from "cors"
 const app = express();
 app.use(cors())
@@ -18,6 +20,8 @@ app.use("/api",cartRouter)
 app.use("/api",orderRouter)
 app.use("/api",commentRouter)
 app.use("/api",favoriteRouter)
+app.use("/api",uploadRouter)
+app.use("/api",sendMailRouter)
 mongoose.connect("mongodb://127.0.0.1:27017/furniture")
 .then(()=>console.log("kết nối thành công furniture"))
 export const viteNodeApp = app

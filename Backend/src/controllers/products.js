@@ -2,7 +2,7 @@ import Products from "../models/products"
 import Category from "../models/categories"
 import unidecode from "unidecode"
 export const getAllProduct = async (req, res) => {
-  const {_page = 1, _order = "asc", _limit =40, _sort = "createdAt", _q=""} = req.query;
+  const {_page = 1, _order = "asc", _limit =12, _sort = "createdAt", _q=""} = req.query;
   const options = {
     page: _page,
     limit: _limit,
@@ -98,12 +98,15 @@ export const getOneProduct=async(req, res)=>{
         const product = await Products.findById(req.params.id).populate("categoryId")
 
         await product.populate("categoryId.productId")
-        const limitedProducts = product.categoryId.productId.slice(0, 5);
-       
+        const limitedProducts = product.categoryId.productId.slice(0, 6);
+        const productIndexOf = limitedProducts.find(item=> item._id == req.params.id)
+        console.log(productIndexOf);
+        const productIndex = limitedProducts.indexOf(productIndexOf)
+        limitedProducts.splice(productIndex,1)
         return res.status(201).json({
             message: "Get product successfully",
             product,
-            cate:limitedProducts
+            relatedProducts:limitedProducts
         })
     } catch (error) {
         return res.status(400).json({
@@ -168,27 +171,18 @@ export  const productOutstanding=async(req, res)=>{
     }
 
   }
-  export const filterCategory=async(req, res)=>{
-    const {_page = 1, _order = "asc", _limit = 8, _sort = "createAt", _q=""} = req.query;
-    const options = {
-      page: _page,
-      limit: _limit,
-      sort: {
-        [_sort]: _order === "desc" ? -1 : 1,
-      },
-    };
-    
-    try {
+  export const categoryProducts=async(req, res)=>{
+    const {_page=1, _limit=12} =req.query
+    const options={
+      page:_page,
+      limit:_limit,
+    }
+    try{
       
-    const  product = await Products.paginate({}, options);
-    const {minPrice, maxPrice} = req.body
-      console.log(minPrice,maxPrice);
-      const filter = await product.docs.filter(item=>item.price>=minPrice && item.price <= maxPrice     
-      )
-      console.log("Lọc: ",filter);
+    const products =  await Products.paginate({categoryId: req.params.idCate},options)
       return res.status(201).json({
-        message: "Get all product successfully",
-        filter
+        message: "Get categoryProducts successfully",
+        products
       });
     } catch (error) {
       return res.status(400).json({

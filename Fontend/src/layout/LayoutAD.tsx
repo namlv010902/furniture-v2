@@ -10,12 +10,21 @@ import {
 import type { MenuProps } from 'antd';
 import { Layout, Menu, theme } from 'antd';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
-const LayoutAD = () => {
+interface IProps{
+  user:any
+}
+const LayoutAD = (props:IProps) => {
+  console.log(props.user);
+  
     const navigate = useNavigate()
    useEffect(()=>{
-    if(!JSON.parse(localStorage.getItem("userId")!)){
-        navigate("/auth/login")
-    }
+    if(props?.user?.role !=="admin"){
+      navigate("/auth/login")
+       return
+     }  
+   
+       
+    
    },[])
     const { Header, Content, Footer, Sider } = Layout;
 

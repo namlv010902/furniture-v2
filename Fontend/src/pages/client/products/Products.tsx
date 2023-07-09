@@ -10,26 +10,27 @@ import 'react-toastify/dist/ReactToastify.css';
 interface IProps {
   products: IProduct[],
   totalPage: number,
-  onPage(e: number): void
+  onPage( page: number): void
   onSort(value: any): void
   handlePrice(min: number, max: number): void
   categories: ICate[],
-  filterCategory(id: string): void
+  handleCategoryProducts(id: string): void
   handleAddToCart(data: any): void
+
 }
 const Products = (props: IProps) => {
-
+  console.log(props.totalPage);
   const onChangePrice = (value: any) => {
     const min = value[0]
     const max = value[1]
     props.handlePrice(min, max)
   }
-
+ console.log(props.products);
+ 
   const handleCheckBox = (e: any) => {
     const value = e
     if (value) {
       console.log("Chọn " + value);
-
     } else {
       console.log("No value")
     }
@@ -61,7 +62,7 @@ const Products = (props: IProps) => {
               <div className="name-cate">
                 {props.categories?.map((item: any) => {
                   return (
-                    <Button key={item._id} onClick={() => props.filterCategory(item._id)}><img src={item.icon} />{item?.name}</Button>
+                    <Button key={item._id} onClick={() =>props.handleCategoryProducts(item._id)}><img src={item.icon} />{item?.name}</Button>
                   )
                 })}
 

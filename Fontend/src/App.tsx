@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 import Layout from './layout/Layout'
+import { useLocation } from 'react-router-dom';
 import Home from './pages/client/home/Home'
 import './App.css'
 import DetailProduct from './pages/client/detail-product/DetailProduct'
@@ -15,7 +16,7 @@ import Blog from './pages/client/Blog/Blog'
 import News from './pages/client/news/News'
 import { addToCart, getCart, removeProductInCart, updateCart } from './api/cart'
 import { toast } from "react-toastify"
-import { createProduct, filterPrice, getAll, paginateProduct, searchProduct, sortProduct, updateProduct } from './api/products'
+import { createProduct, filterPrice, getAll, getCategoryProducts, paginateCategoryProducts, paginateProduct, searchProduct, sortProduct, updateProduct } from './api/products'
 import { IProduct } from './types/products'
 import axios from 'axios'
 import { ICate } from './types/categories'
@@ -33,8 +34,12 @@ import LayoutAD from './layout/LayoutAD'
 import ListProducts from './pages/admin/products/ListProducts'
 import CreateProduct from './pages/admin/products/CreateProduct'
 import UpdateProduct from './pages/admin/products/UpdateProduct'
+import ResetPassord from './pages/client/resetPassword/ResetPassord'
 
 function App() {
+  // const location = useLocation();
+  // const token = decodeURIComponent(location.pathname.split('/').pop()!);
+  const [resetPage, setResetPage] = useState(false)
   const navigate = useNavigate()
   const idUser = JSON.parse(localStorage.getItem('userId')!) || {};
   const [user, setUser] = useState()
@@ -100,28 +105,46 @@ function App() {
     getAll().then(({ data }) => setProducts(data.product.docs)
     )
   }, [])
-  const [totalPage, setToTalPage] = useState(0)
   const handlePrice = (min: number, max: number) => {
     filterPrice(min, max).then(({ data }) => setProducts(data.filter))
   }
-
-  axios.get("http://localhost:8080/api/product/").then(({ data }) => {
-    setToTalPage((data.product.totalPages) * 10)
-  })
+  
   const onSearch = (value: any) => {
     searchProduct(value).then(({ data }) => {
       setProducts(data.product.docs)
     })
   }
+  const [totalPage, setToTalPage] = useState(0)
+useEffect(()=>{
+  axios.get("http://localhost:8080/api/product/").then(({ data }) => {
+    setToTalPage((data.product.totalPages) * 10)
+  })
+},[])
+const [idCate, setIdCate] = useState("")
+  const handleCategoryProducts = (id: string) => {
+    setIdCate(id)
+    getCategoryProducts(id).then(({ data }) =>{
+      setProducts(data.products.docs)   
+      setToTalPage((data.products.totalPages) * 10)
+      setResetPage(true)
+    } )
+  }
   const handlePageChange = (page: any) => {
+    if(resetPage){
+      paginateCategoryProducts(idCate,page).then(({ data }) => {
+        console.log(data.products);
+        setToTalPage((data.products.totalPages) * 10)
+        setProducts(data.products.docs)   })
+        console.log("Page hiện tại: " + page, "/Tổng page: " + totalPage);
+        return
+    }
     paginateProduct(page).then(({ data }) => {
       console.log(data);
-      setToTalPage((data.totalPages) * 10)
-      setProducts(data.product.docs)
-
-    })
-    console.log("Page hiện tại: " + page, "/Tổng page: " + totalPage);
+      setToTalPage((data.product.totalPages) * 10)
+      setProducts(data.product.docs)   })
+      console.log("Page hiện tại: " + page, "/Tổng page: " + totalPage); 
   };
+
   const handleSortChange = (value: any) => {
     console.log(value);
     sortProduct(value).then(({ data }) => {
@@ -145,9 +168,7 @@ function App() {
 
     })
   }
-  const filterCategory = (id: string) => {
-    getCategory(id).then(({ data }) => setProducts(data.category.productId))
-  }
+
   const [categories, setCategories] = useState<ICate[]>()
   useEffect(() => {
     getCategories().then(({ data }) => setCategories(data.category))
@@ -194,7 +215,11 @@ function App() {
   useEffect(() => {
     getFavoriteUser(idUser).then(({ data }) => setFavorites(data.favorites))
   }, [])
-  
+  const handleAddFavorite = (id: string) => {
+   
+    
+
+  }
 
 
   return (
@@ -202,8 +227,8 @@ function App() {
       <Routes>
         <Route path='' element={<Layout cart={cart} removeOneProductInCart={removeOneProductInCart} user={user} logOut={logOut} />}>
           <Route path='/' element={<Home handleAddToCart={handleAddToCart} />}></Route>
-          <Route path='/products' element={<Products handleAddToCart={handleAddToCart} categories={categories} handlePrice={handlePrice}
-            filterCategory={filterCategory}
+          <Route path='/products' element={<Products  handleAddToCart={handleAddToCart} categories={categories} handlePrice={handlePrice}
+            handleCategoryProducts={handleCategoryProducts}
             onSearch={onSearch} totalPage={totalPage} onSort={handleSortChange} onPage={handlePageChange} products={products} />}></Route>
           <Route path='product/:id' element={<DetailProduct handleCreateComment={handleCreateComment} handleAddToCart={handleAddToCart} />}></Route>
           <Route path='cart' element={<Cart cart={cart} handleCreateOrder={handleCreateOrder} removeOneProductInCart={removeOneProductInCart} updateCart={handleUpdateCart} />}></Route>
@@ -216,9 +241,10 @@ function App() {
           <Route path='order' element={<InvoiceList onFilterOrder={onFilterOrder} orders={orders} />}></Route>
           <Route path='order/:id' element={<OrderDetail />}></Route>
           <Route path='message' element={<SuccessMessage />}></Route>
+          <Route path='auth/resetPassword/:token/' element={<ResetPassord />}></Route>
           <Route path='*' element={<NotFoundPage />}></Route>
         </Route>
-        <Route path='admin' element={<LayoutAD />}>
+        <Route path='admin' element={<LayoutAD user={user} />}>
         <Route path='products' element={<ListProducts products={products} />}></Route>
         <Route path='product/add' element={<CreateProduct categories={categories} handleCreateProduct={handleCreateProduct} />}></Route>
         <Route path='product/update/:id' element={<UpdateProduct categories={categories} handleUpdateProduct={handleUpdateProduct} />}></Route>

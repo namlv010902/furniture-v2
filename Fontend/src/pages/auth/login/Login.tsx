@@ -53,7 +53,7 @@ const Login = (props:IProps) => {
       <Input.Password />
     </Form.Item>
 
-    <Form.Item name="remember" valuePropName="checked" wrapperCol={{ offset: 8, span: 16 }}>
+    <Form.Item name="remember" valuePropName="checked" style={{textAlign:"center"}}>
       <Checkbox>Remember me</Checkbox>
     </Form.Item>
 

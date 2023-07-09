@@ -43,11 +43,12 @@ const Home = (props:IProps) => {
 
     </div>
       <div className="product">
-      <img src="https://img.freepik.com/free-photo/chic-modern-luxury-aesthetics-style-living-room-in-gray-tone_53876-132806.jpg?w=1060&t=st=1688716367~exp=1688716967~hmac=dbb1c47a0be5fa0a922c1080713033a8ea75364cebacc5dd789eb8c60e9c0785" alt="" />
-
-      <img src="https://img.freepik.com/free-photo/mid-century-modern-living-room-interior-design-with-monstera-tree_53876-129803.jpg?w=1060&t=st=1688716288~exp=1688716888~hmac=7ae7477e34da5ac21e496f120b0576f616b2f94bc728bc7977e1836f9478cf47" alt="" />
-      <img src="https://img.freepik.com/premium-photo/luxurious-modern-classic-black-interior-generative-ai_372999-11253.jpg?w=1060" alt="" />
+      <img src="https://img.freepik.com/free-photo/luxury-domestic-kitchen-with-elegant-wooden-design-generated-by-ai_188544-15357.jpg?w=1380&t=st=1688840141~exp=1688840741~hmac=bc44d539ee6bfb4c6748d0fc47c8d14f89330760fa4903db180c1ae7f3b18ed6" alt="" />
       <img src="https://img.freepik.com/premium-photo/a-living-room-with-a-grey-couch-and-a-white-coffee-table-with-a-white-lamp-on-it-generative-ai_627050-316.jpg?w=1060" alt="" /> 
+
+      <img src="https://as1.ftcdn.net/v2/jpg/05/97/78/58/1000_F_597785854_0MTv7Un7TvjYYVFUFZkk6NCfEgGix38a.jpg" alt="" />
+      <img src="https://img.freepik.com/free-photo/armchair-in-living-room-with-copy-space_43614-908.jpg?w=996&t=st=1688839899~exp=1688840499~hmac=bb577646ed8c3f494e3a7ea571a91114d77d315457e51d27f49fd37fb850a25d" alt="" />
+
       </div>
       <TopProduct handleAddToCart={props.handleAddToCart}></TopProduct>
       
@@ -57,7 +58,7 @@ const Home = (props:IProps) => {
 <img src="https://bizweb.dktcdn.net/100/331/465/themes/684469/assets/banner_2_image.png?1685520819893" alt="" />
 
 </div>
-   <NewProducts></NewProducts>
+   <NewProducts handleAddToCart={props.handleAddToCart}></NewProducts>
     <div className="title" >
    <div className="title-child"><h1>Tin tức</h1><h5></h5></div> 
      <hr />

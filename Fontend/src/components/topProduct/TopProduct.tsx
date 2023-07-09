@@ -30,6 +30,9 @@ const TopProduct = (props: IProps) => {
      quantity:1,
      userId:JSON.parse(localStorage.getItem('userId')!)
     }
+    if(!JSON.parse(localStorage.getItem('userId')!)){
+      return toast.error("Bạn chưa đăng nhập")
+     }
     props.handleAddToCart(data)
    }
   useEffect(() => {
