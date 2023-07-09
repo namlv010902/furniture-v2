@@ -22,9 +22,7 @@ const LayoutAD = (props:IProps) => {
       navigate("/auth/login")
        return
      }  
-   
-       
-    
+  
    },[])
     const { Header, Content, Footer, Sider } = Layout;
 

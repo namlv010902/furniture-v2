@@ -13,7 +13,7 @@ export const checkPermissionAndAuth=async(req, res, next)=>{
                 if (err.name === "JsonWebTokenError") {
                     return res.status(401).json({
                         message: "Token không hợp lệ!",
-                        //Token không hợp lệ
+                        
                     });
                 }
                 if (err.name === "TokenExpiredError") {
