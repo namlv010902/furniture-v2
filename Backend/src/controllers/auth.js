@@ -52,7 +52,7 @@ export const login=async(req, res)=>{
             })
         }
 
-       const accessToken = await jwt.sign({id:user._id},"namle2002",{expiresIn:"2m"})
+       const accessToken = await jwt.sign({id:user._id},"namle2002",{expiresIn:"30ms"})
          user.password = undefined
         return res.status(201).json({
             message: "Login account successfully",

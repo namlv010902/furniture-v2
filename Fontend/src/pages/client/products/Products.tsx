@@ -60,6 +60,7 @@ const Products = (props: IProps) => {
             <div className="cate">
               <h3><i className="fa fa-bars" aria-hidden="true"></i> Danh mục sản phẩm</h3>
               <div className="name-cate">
+                {/* <Button >Tất cả</Button> */}
                 {props.categories?.map((item: any) => {
                   return (
                     <Button key={item._id} onClick={() =>props.handleCategoryProducts(item._id)}><img src={item.icon} />{item?.name}</Button>
