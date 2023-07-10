@@ -9,13 +9,13 @@ export const authenticateEmailToken = async (req, res, next) => {
         if (err) {
           if (err.name == "JsonWebTokenError") {
             return res.status(401).json({
-              message: "Token không hợp lệ!",
+              message: "Mã xác minh không hợp lệ!",
               //Token không hợp lệ
             });
           }
           if (err.name == "TokenExpiredError") {
             return res.status(402).json({
-              message: "Token hết hạn",
+              message: "Mã xác minh đã hết hạn",
             });
           }
         }
@@ -24,7 +24,7 @@ export const authenticateEmailToken = async (req, res, next) => {
         const user = await User.findOne({ email: payLoad.email });
         if (!user) {
           return res.status(402).json({
-            message: "User not found"
+            message: "Email chưa được đăng ký"
           });
         }
   

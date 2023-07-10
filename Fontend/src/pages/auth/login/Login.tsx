@@ -63,7 +63,7 @@ const Login = (props:IProps) => {
       </Button>
     </Form.Item>
     <Form.Item style={{textAlign:"center"}}>
-<Link to="/register"> Quên mật khẩu?</Link>
+<Link to="/sendTokenMail"> Quên mật khẩu?</Link>
      </Form.Item>
     <Form.Item style={{textAlign:"center"}}>
      <p> Bạn chưa có tài khoản?<Link to="/auth/register"> Đăng ký tại đây</Link></p>  

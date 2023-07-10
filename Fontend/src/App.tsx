@@ -35,6 +35,9 @@ import ListProducts from './pages/admin/products/ListProducts'
 import CreateProduct from './pages/admin/products/CreateProduct'
 import UpdateProduct from './pages/admin/products/UpdateProduct'
 import ResetPassord from './pages/client/resetPassword/ResetPassord'
+import SendTokenMail from './pages/client/mail/SendTokenMail';
+import VerifyTokenMail from './pages/client/mail/VerifyTokenMail';
+import ForgotPassword from './pages/client/forgotPassword/ForgotPassword';
 
 function App() {
   // const location = useLocation();
@@ -241,7 +244,9 @@ const [idCate, setIdCate] = useState("")
           <Route path='order' element={<InvoiceList onFilterOrder={onFilterOrder} orders={orders} />}></Route>
           <Route path='order/:id' element={<OrderDetail />}></Route>
           <Route path='message' element={<SuccessMessage />}></Route>
-          <Route path='auth/resetPassword/:token/' element={<ResetPassord />}></Route>
+          <Route path='sendTokenMail/' element={<SendTokenMail />}></Route>
+          <Route path='verifyTokenMail/' element={<VerifyTokenMail />}></Route>
+          <Route path='forgotPassword/' element={<ForgotPassword />}></Route>
           <Route path='*' element={<NotFoundPage />}></Route>
         </Route>
         <Route path='admin' element={<LayoutAD user={user} />}>

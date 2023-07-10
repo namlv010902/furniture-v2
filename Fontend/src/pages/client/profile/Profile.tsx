@@ -33,7 +33,7 @@ const Profile = (props:IProps) => {
       <Card>
         <Meta
           avatar={
-            <Avatar className='avatar' src="https://lh5.googleusercontent.com/x14nnYSvR1c8KkO6Kj1giR4iZcQL0UelyqcGBRFt8fHQg8sRUouMkFc3b_F-kmDLDW-qpDo8KkBpuXGnfUNjy6NZVqwAcBYnngbupNd2scJqGyNpjYTGQZdfY3ktqFJZNsKfXR-YrDmqrcQwOrM4k2M" />
+            <Avatar className='avatar' src={props?.user?.avatar} />
           }
           title={props?.user?.name}
           description="Web Developer"
@@ -60,7 +60,7 @@ const Profile = (props:IProps) => {
          <Card>
            <Meta
              avatar={
-               <Avatar className='avatar' src="https://lh5.googleusercontent.com/x14nnYSvR1c8KkO6Kj1giR4iZcQL0UelyqcGBRFt8fHQg8sRUouMkFc3b_F-kmDLDW-qpDo8KkBpuXGnfUNjy6NZVqwAcBYnngbupNd2scJqGyNpjYTGQZdfY3ktqFJZNsKfXR-YrDmqrcQwOrM4k2M" />
+               <Avatar className='avatar' src={props?.user?.avatar} />
              }
              title={props?.user?.name}
              description="Web Developer"

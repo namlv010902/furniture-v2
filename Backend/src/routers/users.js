@@ -8,6 +8,6 @@ router.patch("/auth/profile",updateProfile)
 router.get("/auth/user/:id",getUser)
 router.post("/email",sendForgotPasswordEmail)
 router.post("/verifyEmailToken",verifyTokenEmail)
-router.post("/forgotPassword",authenticateEmailToken, forgotPassword)
+router.patch("/forgotPassword",authenticateEmailToken, forgotPassword)
 
 export default router
