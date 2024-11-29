@@ -1,1 +1,5 @@
-# furniture-v2 => Nội thất số 1 vũ trụ
+@SubscribeMessage('sendMessage')
+handleSendMessage(client: Socket, payload: string) {
+  // Process incoming message
+  this.wss.emit('receiveMessage', payload);
+}
